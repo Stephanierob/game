@@ -13,3 +13,8 @@ def update():
     my_character.left = my_character.left + 2
     if my_character.left > WIDTH:
         my_character.right = 0
+
+def on_mouse_down(pos):
+    if my_character.collidepoint(pos):
+        print("Eek!")
+
