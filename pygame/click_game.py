@@ -16,5 +16,11 @@ def update():
 
 def on_mouse_down(pos):
     if my_character.collidepoint(pos):
-        print("Eek!")
+        set_my_character_hurt()
 
+def set_my_character_hurt():
+    my_character.image = 'my_character_hurt'
+    sounds.eep.play()
+
+def set_my_character_normal():
+    my_character.image = 'my_character'
