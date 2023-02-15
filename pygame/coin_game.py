@@ -23,14 +23,29 @@ def place_coin():
     coin.x = randint(20, (WIDTH - 20))
     coin.y = randint(20, (HEIGHT - 20))
 
-def timeup():
+def time_up():
     global game_over
     game_over = True
 
 def update():
-    pass
+    global score
 
-clock.schedule(time_up, 7.0)
+    if keyboard.left:
+        fox.x = fox.x - 2
+    elif keyboard.right:
+        fox.x = fox.x + 2
+    elif keyboard.up:
+        fox.y = fox.y - 2
+    elif keyboard.down:
+        fox.y = fox.y + 2
+
+    coin_collected = fox.colliderect(coin)
+
+    if coin_collected:
+        score = score + 10
+        place_coin()
+
+clock.schedule(time_up, 30.0)
 place_coin()
 
 
